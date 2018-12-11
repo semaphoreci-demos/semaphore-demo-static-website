@@ -6,10 +6,10 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: "Build"
+  - name: Install dependencies
     task:
       jobs:
-      - name: Build code
+      - name: npm install
         commands:
           - checkout
-          - ls -1
+          - npm install
