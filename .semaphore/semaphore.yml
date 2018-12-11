@@ -6,10 +6,22 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: Install dependencies
+  - name: ⏬ Install dependencies
     task:
       jobs:
       - name: npm install
         commands:
           - checkout
+          - cache restore node-modules-$(checksum package-lock.json)
           - npm install
+          - cache store node-modules-$(checksum package-lock.json)
+
+
+  - name: 🧱 Build site
+    task:
+      jobs:
+      - name: build
+        commands:
+          - checkout
+          - cache restore node-modules-$(checksum package-lock.json)
+          - npm run build --prefix-path
