@@ -12,7 +12,6 @@ blocks:
       jobs:
         - name: Copy to S3
           commands:
-            - checkout
             - cache restore website-build
             - aws s3 sync "public" "s3://markoci-gatsby" --acl "public-read"
   - name: 🔍 UI tests
