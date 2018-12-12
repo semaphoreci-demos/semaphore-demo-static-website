@@ -25,3 +25,12 @@ blocks:
           - checkout
           - cache restore node-modules-$(checksum package-lock.json),node-modules-
           - npm run build --prefix-path
+          - cache store website-build public
+
+promotions:
+  - name: Deploy to production
+    pipeline_file: production-deploy.yml
+    auto_promote_on:
+      - result: passed
+        branch:
+          - master
