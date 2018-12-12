@@ -18,7 +18,7 @@ blocks:
   - name: 🔍 UI tests
     task:
       jobs:
-        - name: Sanity check website
+        - name: Check live website
           commands:
             - checkout
             - cache restore node-modules-$(checksum package-lock.json),node-modules-
