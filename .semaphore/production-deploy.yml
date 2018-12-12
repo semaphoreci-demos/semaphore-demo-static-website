@@ -18,7 +18,8 @@ blocks:
   - name: 🔍 UI tests
     task:
       jobs:
-        - name: Sanity check website content
+        - name: Sanity check website
           commands:
             - checkout
+            - cache restore node-modules-$(checksum package-lock.json),node-modules-
             - npm run nightwatch
