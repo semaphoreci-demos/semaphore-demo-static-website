@@ -1,0 +1,17 @@
+version: v1.0
+name: Deploy website
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: 🏁 Deploy
+    task:
+      secrets:
+        - name: aws-credential
+      jobs:
+        - name: Copy to S3
+          commands:
+            - checkout
+            - cache restore website-build
+            - aws s3 sync "public" "s3://markoci-gatsby" --acl "public-read"
