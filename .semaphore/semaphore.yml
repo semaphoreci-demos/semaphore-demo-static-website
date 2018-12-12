@@ -12,7 +12,7 @@ blocks:
       - name: npm install
         commands:
           - checkout
-          - cache restore node-modules-$(checksum package-lock.json)
+          - cache restore node-modules-$(checksum package-lock.json), node-modules-
           - npm install
           - cache store node-modules-$(checksum package-lock.json) node_modules
 
@@ -23,5 +23,5 @@ blocks:
       - name: build
         commands:
           - checkout
-          - cache restore node-modules-$(checksum package-lock.json)
+          - cache restore node-modules-$(checksum package-lock.json), node-modules-
           - npm run build --prefix-path
