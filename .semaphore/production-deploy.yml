@@ -15,3 +15,10 @@ blocks:
             - checkout
             - cache restore website-build
             - aws s3 sync "public" "s3://markoci-gatsby" --acl "public-read"
+  - name: 🔍 UI tests
+    task:
+      jobs:
+        - name: Sanity check website content
+          commands:
+            - checkout
+            - 
