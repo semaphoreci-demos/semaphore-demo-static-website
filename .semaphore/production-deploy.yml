@@ -8,7 +8,7 @@ blocks:
   - name: 🏁 Deploy
     task:
       secrets:
-        - name: aws-credential
+        - name: aws-credentials
       jobs:
         - name: Copy to S3
           commands:
