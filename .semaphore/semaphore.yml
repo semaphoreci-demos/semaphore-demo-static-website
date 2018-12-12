@@ -24,4 +24,5 @@ blocks:
         commands:
           - checkout
           - cache restore node-modules-$(checksum package-lock.json), node-modules-
+          - npm install --global gatsby-cli
           - npm run build --prefix-path
