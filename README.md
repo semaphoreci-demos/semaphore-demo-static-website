@@ -9,4 +9,5 @@ Run locally:
 ```
 npm install
 npm run start
+npm run nightwatch
 ```
