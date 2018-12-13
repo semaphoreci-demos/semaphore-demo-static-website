@@ -1,11 +1,5 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+# Example CI/CD project with Semaphore 2.0 and Gatsby.js
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
-
-Or [view the live demo here](https://gatsby-starter-blog-demo.netlify.com/).
-
-## Running in development
-`gatsby develop`
+- App: [Gatsby starter blog](https://github.com/gatsbyjs/gatsby-starter-blog)
+- CI/CD: [Semaphore](https://semaphoreci.com)
+- Deployed to S3 ([view demo](http://markoci-gatsby.s3-website-us-east-1.amazonaws.com))
