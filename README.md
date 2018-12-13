@@ -11,3 +11,5 @@ npm install
 npm run start
 npm run nightwatch
 ```
+
+For a full step-by-step guide, read the [article on dev.to](https://dev.to/markoa/introduction-to-continuous-integration-and-delivery-with-semaphore-20-3k0m).
