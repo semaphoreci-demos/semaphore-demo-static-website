@@ -13,7 +13,7 @@ blocks:
         - name: Copy to S3
           commands:
             - cache restore website-build
-            - aws s3 sync "public" "s3://markoci-gatsby" --acl "public-read"
+            - aws s3 sync "public" "s3://semaphoreci-gatsby" --acl "public-read"
   - name: 🔍 UI tests
     task:
       jobs:
