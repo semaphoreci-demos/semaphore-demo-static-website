@@ -32,13 +32,13 @@ blocks:
           - cache store website-build public
 
 promotions:
-  - name: Production deploy
+  - name: S3 Production deploy
     pipeline_file: production-deploy-s3.yml
     auto_promote_on:
       - result: passed
         branch:
           - master
-  - name: Production deploy
+  - name: Netlify Production deploy
     pipeline_file: production-deploy-netlify.yml
     auto_promote_on:
       - result: passed
