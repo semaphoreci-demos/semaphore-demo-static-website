@@ -1,20 +1,25 @@
+# .semaphore/production-deploy.yml
 version: v1.0
-name: Deploy website
+name: Deploy website to S3
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 🏁 Deploy
+  - name: 🏁 Deplo
     task:
+      # Mount a secret which defines AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and
+      # BUCKET_NAME environment variables.
+      # For info on creating secrets, see:
+      # https://docs.semaphoreci.com/article/66-environment-variables-and-secrets
       secrets:
         - name: aws-credentials
       jobs:
         - name: Copy to S3
           commands:
             - cache restore website-build
-            - aws s3 sync "public" "s3://semaphoreci-gatsby" --acl "public-read"
-  - name: 🔍 UI tests
+            - aws s3 sync "public" "s3://$BUCKET_NAME" --acl "public-read"
+  - name: 🔍 UI test
     task:
       jobs:
         - name: Check live website

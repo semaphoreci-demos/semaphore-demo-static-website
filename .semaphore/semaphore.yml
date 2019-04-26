@@ -1,5 +1,6 @@
+# .semaphore/semaphore.yml
 version: v1.0
-name: Gatsby pipeline
+name: "Gatsby pipeline"
 agent:
   machine:
     type: e1-standard-2
@@ -12,23 +13,26 @@ blocks:
       - name: npm install
         commands:
           - checkout
+          # Reuse dependencies from cache and avoid installing them from scratch:
           - cache restore node-modules-$(checksum package-lock.json),node-modules-
           - npm install
           - cache store node-modules-$(checksum package-lock.json) node_modules
 
-
   - name: 🧱 Build site
     task:
       jobs:
-      - name: build
+      - name: Build
         commands:
           - checkout
           - cache restore node-modules-$(checksum package-lock.json),node-modules-
+          # Replace this with command(s) that build your website:
           - npm run build --prefix-path
+          # The script puts website files in directory `public`,
+          # store it in cache to propagate to deployment:
           - cache store website-build public
 
 promotions:
-  - name: Deploy to production
+  - name: Production deploy
     pipeline_file: production-deploy.yml
     auto_promote_on:
       - result: passed
