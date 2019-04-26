@@ -1,12 +1,12 @@
-# .semaphore/production-deploy.yml
+# .semaphore/production-deploy-s3.yml
 version: v1.0
-name: Deploy website to S3
+name: Deploy website
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 🏁 Deplo
+  - name: 🏁 Depoly
     task:
       # Mount a secret which defines AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and
       # BUCKET_NAME environment variables.

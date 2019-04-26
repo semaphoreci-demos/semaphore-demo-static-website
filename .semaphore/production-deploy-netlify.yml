@@ -1,0 +1,31 @@
+# .semaphore/production-deploy-netlify.yml
+version: v1.0
+name: Deploy website
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: 🏁 Delpoy
+    task:
+      # Goto https://app.netlify.com/user/applications/personal and generate
+      # a new personal access token.
+      # Mount a secret which defines NETLIFY_AUTH_TOKEN environment variable.
+      # For info on creating access token, see:
+      # https://www.netlify.com/docs/cli/
+      secrets:
+        - name: netlify-authentication
+      jobs:
+        - name: Copy to netlify
+          commands:
+            - npm install netlify-cli -g
+            - cache restore website-build
+            - netlify deploy --dir=public --prod
+  - name: 🔍 UI test
+    task:
+      jobs:
+        - name: Check live website
+          commands:
+            - checkout
+            - cache restore node-modules-$(checksum package-lock.json),node-modules-
+            - npm run nightwatch
