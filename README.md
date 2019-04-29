@@ -23,7 +23,7 @@ The example pipeline contains 2 blocks and 2 promotions:
     - installs and caches all npm dependencies.
  - Build site
     - Runs npm build.
-    - Stores website files in "public" in cache.
+    - Stores website files of "public" in cache.
 
 If all steps are ok, we move to the deployment pipelines. It consists of two promotions:
 
@@ -34,9 +34,9 @@ If all steps are ok, we move to the deployment pipelines. It consists of two pro
 
 ## Local project setup
 
-npm install
-npm run start
-npm run nightwatch
+- npm install
+- npm run start
+- npm run nightwatch
 
 ## Related links
 For a full step-by-step guide, read the [article on dev.to](https://dev.to/markoa/introduction-to-continuous-integration-and-delivery-with-semaphore-20-3k0m).
