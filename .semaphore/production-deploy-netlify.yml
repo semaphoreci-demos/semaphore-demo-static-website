@@ -8,11 +8,14 @@ agent:
 blocks:
   - name: 🏁 Delpoy
     task:
-      # Goto https://app.netlify.com/user/applications/personal and generate
-      # a new personal access token.
-      # Mount a secret which defines NETLIFY_AUTH_TOKEN environment variable.
-      # For info on creating access token, see:
-      # https://www.netlify.com/docs/cli/
+      # Mount a secret which defines /home/semaphore/.netlify/config.json and
+      # /home/semaphore/.netlify/state.json.
+      # By mounting it, we make the files available in the job environment.
+      #
+      # Follow the comments in ./secrets/netlify-secret.sample.yml
+      #
+      # For info on creating secrets, see:
+      # https://docs.semaphoreci.com/article/66-environment-variables-and-secrets
       secrets:
         - name: netlify-authentication
       jobs:
