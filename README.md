@@ -33,11 +33,11 @@ If all steps are ok, we move to the deployment pipelines. It consists of two pro
     - Deploys website files to Netlify site.
 
 ## Local project setup
-
-- npm install
-- npm run start
-- npm run nightwatch
-
+```
+npm install
+npm run start
+npm run nightwatch
+```
 ## Related links
 For a full step-by-step guide, read the [article on dev.to](https://dev.to/markoa/introduction-to-continuous-integration-and-delivery-with-semaphore-20-3k0m).
 
