@@ -6,7 +6,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 🏁 Delpoy
+  - name: 🏁 Deploy
     task:
       # Mount a secret which defines /home/semaphore/.netlify/config.json and
       # /home/semaphore/.netlify/state.json.
