@@ -1,0 +1,34 @@
+# .semaphore/production-deploy-netlify.yml
+version: v1.0
+name: Deploy website
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: 🏁 Delpoy
+    task:
+      # Mount a secret which defines /home/semaphore/.netlify/config.json and
+      # /home/semaphore/.netlify/state.json.
+      # By mounting it, we make the files available in the job environment.
+      #
+      # Follow the comments in ./secrets/netlify-secret.sample.yml
+      #
+      # For info on creating secrets, see:
+      # https://docs.semaphoreci.com/article/66-environment-variables-and-secrets
+      secrets:
+        - name: netlify-authentication
+      jobs:
+        - name: Copy to netlify
+          commands:
+            - npm install netlify-cli -g
+            - cache restore website-build
+            - netlify deploy --dir=public --prod
+  - name: 🔍 UI test
+    task:
+      jobs:
+        - name: Check live website
+          commands:
+            - checkout
+            - cache restore node-modules-$(checksum package-lock.json),node-modules-
+            - npm run nightwatch
