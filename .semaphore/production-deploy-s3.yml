@@ -6,7 +6,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 🏁 Depoly
+  - name: 🏁 Deploy
     task:
       # Mount a secret which defines AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and
       # BUCKET_NAME environment variables.
